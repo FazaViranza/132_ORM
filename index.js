@@ -36,3 +36,16 @@ db.sequelize.sync()
             res.send(err);
         }
     });
+
+    app.put('/komik/:id', async (req, res) => {
+        try {
+            const komik = await db.Komik.update(req.body, {
+                where: {
+                    id: req.params.id
+                }
+            });
+            res.send(komik);
+        } catch (err) {
+            res.send(err);
+        }
+    });
